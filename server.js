@@ -33,10 +33,10 @@ app.post('/add', (req, res) => {
   if (!req.body.text) return error(res, 400, 'text attribute is required')
 
   const id = shortid.generate()
-  const { text, done } = req.body
+  const { text } = req.body
 
-  db.get('list').push({ id, text, done }).write()
-  db.get('listExtended').push({ id, ...req.body }).write()
+  db.get('list').push({ id, text, done: false }).write()
+  db.get('listExtended').push({ id, done: false, ...req.body }).write()
   res.send({ id, ...req.body })
 })
 
