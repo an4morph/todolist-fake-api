@@ -24,13 +24,12 @@ app.get('/list', (req, res) => {
 
 app.get('/list/:id', (req, res) => {
   const id = req.params.id
-  const item = db.get('listExtended').find({ id })
+  const item = db.get('list').find({ id })
   if (!item) res.status(400).send('Bad Request')
   res.send(item)
 })
 
 app.post('/add', (req, res) => {
-  console.log(req.body)
   if (!req.body.text) return error(res, 400, 'text attribute is required')
 
   const id = shortid.generate()
