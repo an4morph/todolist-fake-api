@@ -1,28 +1,35 @@
-Фейковый API для простого CRUD приложения "TODO LIST"
+# Фейковый API для простого CRUD приложения "TODO LIST"
 
-Роутинг
-GET /list
+### Роутинг
+<br>
+`GET` /list
+<br>
 выводит весь список заметок
-
-GET /list/:id
+<br>
+`GET` /list/:id
 данные по одной конкретной заметке
-
-POST /add
-body: {
+<br>
+`POST` /add
+<br>
+`body: {
   text: string (required),
   color: string (optional),
   description: string (optional),
-}
+}`
+<br>
 добавить новую заметку
-
-PUT /edit/:id
-body: {
+<br>
+`PUT` /edit/:id
+<br>
+`body: {
   text: string (optional, but not empty),
   done: string (optional),
   color: string (optional),
   description: string (optional),
-}
+}`
+<br>
 редактировать заметку
-
-DELETE /delete/:id
+<br>
+`DELETE` /delete/:id
+<br>
 удалить заметку
