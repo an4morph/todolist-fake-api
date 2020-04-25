@@ -11,22 +11,26 @@
 
 > `POST` /add
 
-`body: {
+```sh
+body: {
   text: string (required),
   color: string (optional),
   description: string (optional),
-}`
+}
+```
 
 добавить новую заметку
 
 > `PUT` /edit/:id
 
-`body: {
+```sh
+body: {
   text: string (optional, but not empty),
   done: string (optional),
   color: string (optional),
   description: string (optional),
-}`
+}
+```
 
 редактировать заметку
 
