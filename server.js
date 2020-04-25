@@ -30,38 +30,34 @@ app.get('/list/:id', (req, res) => {
 })
 
 app.post('/add', (req, res) => {
+  console.log(req.body)
   if (!req.body.text) return error(res, 400, 'text attribute is required')
 
   const id = shortid.generate()
-  const { text } = req.body
+  const addedItem = { id, done: false, ...req.body }
 
-  db.get('list').push({ id, text, done: false }).write()
-  db.get('listExtended').push({ id, done: false, ...req.body }).write()
-  res.send({ id, ...req.body })
+  db.get('list').push(addedItem).write()
+  res.send(addedItem)
 })
 
 app.put('/edit/:id', (req, res) => {
   const { id } = req.params
   const item = db.get('list').find({ id })
-  const itemExtended = db.get('listExtended').find({ id })
 
   if (!item.value()) error(res, 404, `Item with id (${id}) not found`)
 
   item.assign(req.body).write()
-  itemExtended.assign(req.body).write()
-  res.send(itemExtended)
+  res.send(item)
 })
 
 app.delete('/delete/:id', (req, res) => {
   const { id } = req.params
   const item = db.get('list').find({ id })
-  const itemExtended = db.get('listExtended').find({ id })
 
   if (!item.value()) error(res, 404, `Item with id (${id}) not found`)
 
   item.remove({ id })
-  itemExtended.remove({ id })
-  res.send('success deleted')
+  res.end()
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

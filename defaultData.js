@@ -1,18 +1,11 @@
 module.exports = {
-  "list": [
+  list: [
     {
-      "id": "1",
-      "done": false,
-      "text": "Coding every day"
-    }
-  ],
-  "listExtended": [
-    {
-      "id": "1",
-      "done": false,
-      "text": "Coding every day",
-      "color": "#5cf",
-      "description": "Description for task 1"
+      id: "xyz",
+      done: false,
+      text: "Кодить каждый день",
+      color: "#5cf",
+      description: "Практика мое все"
     }
   ]
 }
