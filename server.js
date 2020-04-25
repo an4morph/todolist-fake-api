@@ -55,8 +55,8 @@ app.delete('/delete/:id', (req, res) => {
 
   if (!item.value()) error(res, 404, `Item with id (${id}) not found`)
 
-  item.remove({ id })
-  res.end()
+  db.get('list').remove({ id }).write()
+  res.status(200).json('Successful DELETE').end()
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
