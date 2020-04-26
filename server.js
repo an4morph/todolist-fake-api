@@ -5,9 +5,12 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const defaultData = require('./defaultData')
 const shortid = require('shortid')
+const cors = require('cors')
 
 const adapter = new FileSync('db.json')
 const db = low(adapter)
+
+app.use(cors())
 
 db.defaults(defaultData).write()
 
