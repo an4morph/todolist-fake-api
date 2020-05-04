@@ -25,6 +25,15 @@ app.get('/list', (req, res) => {
   res.send(list)
 })
 
+app.get('/statistics', (req, res) => {
+  const list = db.get('list')
+  res.send({
+    total: list.size(),
+    done: list.filter({ done: true }).size(),
+    undone: list.filter({ done: false }).size(),
+  })
+})
+
 app.get('/list/:id', (req, res) => {
   const id = req.params.id
   const item = db.get('list').find({ id })
