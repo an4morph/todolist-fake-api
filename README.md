@@ -42,3 +42,8 @@ body: {
 > `DELETE` /delete/:id
 
 удалить заметку
+
+
+> `GET` /statistics
+
+получить данные по статистике
