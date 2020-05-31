@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3030
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const defaultData = require('./defaultData')
@@ -13,8 +13,6 @@ const db = low(adapter)
 app.use(cors())
 
 db.defaults(defaultData).write()
-
-const colors = [null, '#efa8e4', '#97e5ef', '#f6d198', '#77d8d8', '#f2ed6f']
 
 const error = (res, status, text) => res.status(status).json(text).end()
 
