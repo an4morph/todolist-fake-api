@@ -50,6 +50,7 @@ app.post('/add', (req, res) => {
 })
 
 app.put('/edit/:id', (req, res) => {
+  console.log(req.method)
   const { id } = req.params
   const item = db.get('list').find({ id })
 
